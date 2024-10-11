@@ -43,14 +43,20 @@ function showHero(hero) {
                 </div>
                 <div class='title'>${hero.title}</div>
             </div>`;
-}
+};
 
 function showError() {
     heroes_content.innerHTML += 
     `<div class='hero' id='error'>error 8(</div>`
 };
 
-await getHeroes('https://ddragon.leagueoflegends.com/cdn/13.18.1/data/es_ES/champion.json');
+// parcel no deja usar await fuera del cuerpo de funcion asincrona 8(
+
+async function auxFunc()  {
+    await getHeroes('https://ddragon.leagueoflegends.com/cdn/13.18.1/data/es_ES/champion.json');
+};
+
+auxFunc();
 
 document.querySelectorAll(".img_hero").forEach((img) => {   
     img.addEventListener('mouseover', () => {
@@ -61,4 +67,4 @@ document.querySelectorAll(".img_hero").forEach((img) => {
         img.style.width = '100px';
         img.style.transition = '50ms';
     })
-})
+});
