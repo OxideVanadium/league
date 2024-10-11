@@ -9,6 +9,7 @@ league_button.addEventListener('click', () => {
     league_button.style.transform = 'translateY(0px)';
     league_button.style.transition = '2s';
     league_button.style.height = '200px';
+    league_button.style.cursor = 'default';
     heroes_content.style.opacity = '100%';
     heroes_content.style.transition = '3s';
 });
@@ -20,15 +21,14 @@ async function getHeroes(url) {
         for (var hero in heroes_json.data) {
             hero = new Hero(heroes_json.data[hero]);
             heroes.push(hero);
+            showHero(hero);
         }
     } else {
         showError();
     };
 };
 
-async function showHeroes(heroes_list) {
-    await getHeroes('https://ddragon.leagueoflegends.com/cdn/13.18.1/data/es_ES/champion.json');
-    heroes_list.forEach((hero) => {
+function showHero(hero) {
         heroes_content.innerHTML +=
         `<div class='hero'>
                 <div class='name'>${hero.name}</div>
@@ -43,34 +43,22 @@ async function showHeroes(heroes_list) {
                 </div>
                 <div class='title'>${hero.title}</div>
             </div>`;
-        }
-    );
-    document.querySelectorAll(".img_hero").forEach((img) => {   
-        img.addEventListener('mouseover', () => {
-            img.style.width = '150px';
-            img.style.transition = '1s';
-        });
-        img.addEventListener('mouseout', () => {
-            img.style.width = '100px';
-            img.style.transition = '50ms';
-        })
-    })
 }
-showHeroes(heroes);
-
-// document.querySelectorAll(".img_hero").forEach((img) => {   
-//     img.addEventListener('mouseover', () => {
-//         img.style.width = '150px';
-//         img.style.transition = '1s';
-//     });
-//     img.addEventListener('mouseout', () => {
-//         img.style.width = '100px';
-//         img.style.transition = '50ms';
-//     })
-// })
 
 function showError() {
     heroes_content.innerHTML += 
     `<div class='hero' id='error'>error 8(</div>`
 };
 
+await getHeroes('https://ddragon.leagueoflegends.com/cdn/13.18.1/data/es_ES/champion.json');
+
+document.querySelectorAll(".img_hero").forEach((img) => {   
+    img.addEventListener('mouseover', () => {
+        img.style.width = '150px';
+        img.style.transition = '1s';
+    });
+    img.addEventListener('mouseout', () => {
+        img.style.width = '100px';
+        img.style.transition = '50ms';
+    })
+})
