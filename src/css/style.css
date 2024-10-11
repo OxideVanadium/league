@@ -10,6 +10,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     transform: translateY(200px);
+    cursor: pointer;
 }
 
 #error {
