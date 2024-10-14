@@ -54,17 +54,18 @@ function showError() {
 
 async function auxFunc()  {
     await getHeroes('https://ddragon.leagueoflegends.com/cdn/13.18.1/data/es_ES/champion.json');
+    document.querySelectorAll(".img_hero").forEach((img) => {   
+        img.addEventListener('mouseover', () => {
+            img.style.width = '150px';
+            img.style.transition = '1s';
+        });
+        img.addEventListener('mouseout', () => {
+            img.style.width = '100px';
+            img.style.transition = '50ms';
+        })
+    });
 };
 
 auxFunc();
 
-document.querySelectorAll(".img_hero").forEach((img) => {   
-    img.addEventListener('mouseover', () => {
-        img.style.width = '150px';
-        img.style.transition = '1s';
-    });
-    img.addEventListener('mouseout', () => {
-        img.style.width = '100px';
-        img.style.transition = '50ms';
-    })
-});
+
