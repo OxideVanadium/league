@@ -67,5 +67,3 @@ async function auxFunc()  {
 };
 
 auxFunc();
-
-
