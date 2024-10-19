@@ -33,3 +33,5 @@ La aplicación web será una librería online multilingüe que permitirá a los 
 
 ![Prototipo](Prototipo/1.gif)
 
+[Prototipo](https://www.figma.com/proto/7KA1gSzUAB7ugiLSfYMGPW/Untitled?node-id=11-310&t=X85g1MFXRMNOxB2q-1)
+
